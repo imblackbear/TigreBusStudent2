@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/menu_switch"
+        android:title="ola"
+        app:actionViewClass="android.widget.Switch"
+        app:showAsAction="always"
+        android:actionLayout="@layout/switch_layout">
+    </item>
+
+
+
+    <item android:id="@+id/menu_perfil"
+        app:showAsAction="always"
+        android:title="Perfil"
+        android:icon="@drawable/ic_perfil"/>
+
+
+
+
+    <item
+        android:id="@+id/vacio"
+        android:title="conf"
+        android:icon="@drawable/ic_paradatigrebus"
+        android:orderInCategory="101"
+        app:showAsAction="always">
+
+        <menu>
+            <item android:id="@+id/menu_rCA"
+                app:showAsAction="never"
+                android:title="Ciencias Agropecuarias"
+                 />
+
+            <item android:id="@+id/menu_rCU"
+                app:showAsAction="never"
+                android:title="Ciudad Universitaria"
+                 />
+
+            <item android:id="@+id/menu_rCdS"
+                app:showAsAction="never"
+                android:title="Ciencias de la salud"
+                />
+
+            <item android:id="@+id/menu_rUM"
+                app:showAsAction="never"
+                android:title="Unidad Mederos"
+                 />
+
+        </menu>
+    </item>
+
+
+
+
+
+</menu>

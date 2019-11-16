@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Switch
+        android:id="@+id/id_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/switchtheme"
+        android:fontFamily="@font/regular"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
+        android:textColor="@color/blanco"
+        android:switchMinWidth="40dp"
+        android:text="En línea " />
+
+</LinearLayout>

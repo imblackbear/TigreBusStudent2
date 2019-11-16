@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFC20F</color>
+    <color name="colorPrimaryDark">#C4950C</color>
+    <color name="colorAccent">#00629F</color>
+
+
+    <color name="blanco">#ffffff</color>
+    <color name="amarillo">#FFC20F</color>
+    <color name="azul">#00629F</color>
+    <color name="negro">#000000</color>
+    <color name="gris_claro">#F1F1F1</color>
+    <color name="gris">#9D9D9D</color>
+    <color name="amarilloc">#F0DE61</color>
+
+</resources>

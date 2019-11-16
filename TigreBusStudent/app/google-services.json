@@ -1,0 +1,131 @@
+{
+  "project_info": {
+    "project_number": "583412341383",
+    "firebase_url": "https://tigrebus-d79a3.firebaseio.com",
+    "project_id": "tigrebus-d79a3",
+    "storage_bucket": "tigrebus-d79a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583412341383:android:364ddf69bc103864037622",
+        "android_client_info": {
+          "package_name": "com.example.tigrebus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583412341383-tc0q5cplbjcngp40gnoer62deg71aq72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tigrebus",
+            "certificate_hash": "6b7c5e29693a12545d32e60ec03b6fc088291ec9"
+          }
+        },
+        {
+          "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXFF7zlvwcQPL9aOBCqrqN-vDH8r0H8BU"
+        },
+        {
+          "current_key": "AIzaSyAL-H2CzghWFKZ7vUwP_NIEpXFhUFluEPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583412341383:android:102d65de0608165b037622",
+        "android_client_info": {
+          "package_name": "com.example.tigrebusdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583412341383-16ocjeoop3kl9e2ohkn41r4453s5uk59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tigrebusdriver",
+            "certificate_hash": "6b7c5e29693a12545d32e60ec03b6fc088291ec9"
+          }
+        },
+        {
+          "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXFF7zlvwcQPL9aOBCqrqN-vDH8r0H8BU"
+        },
+        {
+          "current_key": "AIzaSyAL-H2CzghWFKZ7vUwP_NIEpXFhUFluEPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583412341383:android:413a4d52ecfb4176037622",
+        "android_client_info": {
+          "package_name": "com.example.tigrebusstudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583412341383-00ed17g0v91397otbf013etiitd9siq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tigrebusstudent",
+            "certificate_hash": "6b7c5e29693a12545d32e60ec03b6fc088291ec9"
+          }
+        },
+        {
+          "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXFF7zlvwcQPL9aOBCqrqN-vDH8r0H8BU"
+        },
+        {
+          "current_key": "AIzaSyAL-H2CzghWFKZ7vUwP_NIEpXFhUFluEPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583412341383-rpbse464bmntt4nofiemka1ml6lss3ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
