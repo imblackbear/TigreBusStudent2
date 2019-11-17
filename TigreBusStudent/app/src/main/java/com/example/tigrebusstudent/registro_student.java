@@ -22,17 +22,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class registro_driver extends AppCompatActivity {
+import es.dmoral.toasty.Toasty;
+
+public class registro_student extends AppCompatActivity {
     //referencias de cada campo del XML
-    private EditText txt_matricula,txt_nombre,txt_apellidos,txt_direccion,txt_telefono,txt_correo,txt_password;
+    private EditText txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
     private Button bt_registrar, bt_iniciarse;
     private ProgressDialog progressDialog;      //declarando variable PD
 
     //variables de los datos a registrar del alumno
-    private String num_empleado = "";
+    private String matricula = "";
     private String nombre = "";
     private String apellidos = "";
-    private String direccion = "";
+    private String carrera = "";
     private String telefono = "";
     private String correo = "";
     private String password = "";
@@ -45,7 +47,7 @@ public class registro_driver extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_driver);
+        setContentView(R.layout.activity_registro_student);
 
         //instanciar ProgressDialog
         this.progressDialog = new ProgressDialog(this);
@@ -59,10 +61,10 @@ public class registro_driver extends AppCompatActivity {
 
 
         //instanciar cada EditText
-        txt_matricula = (EditText)findViewById(R.id.et_num_empleado);
+        txt_matricula = (EditText)findViewById(R.id.et_matricula);
         txt_nombre = (EditText)findViewById(R.id.et_nombre2);
         txt_apellidos = (EditText)findViewById(R.id.et_apellidos2);
-        txt_direccion = (EditText)findViewById(R.id.et_direccion2);
+        txt_carrera = (EditText)findViewById(R.id.et_carrera2);
         txt_telefono = (EditText)findViewById(R.id.et_telefono2);
         txt_correo = (EditText)findViewById(R.id.et_correo2);
         txt_password = (EditText)findViewById(R.id.et_password2);
@@ -74,30 +76,29 @@ public class registro_driver extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //obtener datos
-                num_empleado = txt_matricula.getText().toString();
+                matricula = txt_matricula.getText().toString();
                 nombre = txt_nombre.getText().toString();
                 apellidos = txt_apellidos.getText().toString();
-                direccion = txt_direccion.getText().toString();
+                carrera = txt_carrera.getText().toString();
                 telefono = txt_telefono.getText().toString();
                 correo = txt_correo.getText().toString();
                 password = txt_password.getText().toString();
 
 
                 //validacion para saber si el usuario ingreso valores a los EditText
-                if(!num_empleado.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !direccion.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty()){
+                if(!matricula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !carrera.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty()){
 
                     //Firebase requiere de almenos 6 caracteres en la contraseña
                     if(password.length() >= 6 ){
                         //Ejecutara el metodo registrarUsuario
                         registrarDriver();
                     }else {
-                        Toast.makeText(registro_driver.this, "La contraseña debe de tener almenos 6 caracteres", Toast.LENGTH_LONG).show();
+                        Toasty.warning(registro_student.this, "La contraseña debe de tener almenos 6 caracteres", Toast.LENGTH_LONG).show();
                     }
 
                 }else {
-                    Toast.makeText(registro_driver.this, "Debe completar todos los campos", Toast.LENGTH_LONG).show();
+                    Toasty.warning(registro_student.this, "Debe completar todos los campos", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
@@ -105,7 +106,7 @@ public class registro_driver extends AppCompatActivity {
         bt_iniciarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(registro_driver.this,ingresar_driver.class));
+                startActivity(new Intent(registro_student.this, ingresar_student.class));
             }
         });
 
@@ -128,10 +129,10 @@ public class registro_driver extends AppCompatActivity {
 
 
                     Map<String, Object> map = new HashMap<>();
-                    map.put("Num empleado",num_empleado);
+                    map.put("Matricula",matricula);
                     map.put("Nombre",nombre);
                     map.put("Apellidos",apellidos);
-                    map.put("Direccion",direccion);
+                    map.put("Carrera",carrera);
                     map.put("Telefono",telefono);
                     map.put("Correo",correo);
                     map.put("Contraseña",password);
@@ -141,7 +142,7 @@ public class registro_driver extends AppCompatActivity {
                     String id = Auth.getCurrentUser().getUid();
 
 
-                    Database.child("Usuarios").child("Conductores").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    Database.child("Usuarios").child("Alumnos").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
@@ -150,20 +151,20 @@ public class registro_driver extends AppCompatActivity {
                                 usuario.sendEmailVerification();
                                 //quitar if
                                 if(!usuario.isEmailVerified()){
-                                    Toast.makeText(registro_driver.this, "Verifica tu cuenta en el correo electrónico ingresado", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(registro_driver.this,ingresar_driver.class));
+                                    Toasty.info(registro_student.this, "Verifica tu cuenta en el correo electrónico ingresado", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(registro_student.this, ingresar_student.class));
                                 }
 
 
                             }else {
-                                Toast.makeText(registro_driver.this, "No se pudieron registrat los datos correctamente", Toast.LENGTH_LONG).show();
+                                Toasty.warning(registro_student.this, "No se pudieron registrat los datos correctamente", Toast.LENGTH_LONG).show();
                             }
                             //finalizarlo
                             progressDialog.dismiss();
                         }
                     });
                 }else {
-                    Toast.makeText(registro_driver.this, "No se pudo registrar este usuario, verifica los datos", Toast.LENGTH_LONG).show();
+                    Toasty.warning(registro_student.this, "No se pudo registrar este usuario, verifica los datos", Toast.LENGTH_LONG).show();
                 }
                 progressDialog.dismiss();
             }

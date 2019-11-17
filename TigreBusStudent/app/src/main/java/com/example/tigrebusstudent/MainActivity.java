@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //regresar valores para que funcione
-        MapaDriver.cancelar = false;
-        MapaDriver.iniciarcu = true;
+        MapaStudent.cancelar = false;
+        MapaStudent.iniciarcu = true;
 
 
     }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo para avanzar a la activity ingresar por medio de su boton
     public void ingresar (View view){
-        Intent ingresar = new Intent(this,ingresar_driver.class);
+        Intent ingresar = new Intent(this, ingresar_student.class);
         startActivity(ingresar);
         //lanza un segundo activity con el metodo creado ingresar
     }
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo para avanzar a la activity registrar por medio de su boton
     public void registrar (View view){
-        Intent registrar = new Intent(this,registro_driver.class);
+        Intent registrar = new Intent(this, registro_student.class);
         startActivity(registrar);
         //lanza un segundo activity con el metodo creado registrar
     }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser usuario = Auth.getCurrentUser();
             //comprueba si el usuario ya verifico su correo
             if(usuario.isEmailVerified()) {
-                startActivity(new Intent(MainActivity.this, MapaDriver.class));
+                startActivity(new Intent(MainActivity.this, MapaStudent.class));
                 finish();
             }
         }

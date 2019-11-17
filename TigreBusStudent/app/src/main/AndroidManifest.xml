@@ -31,10 +31,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapaDriver"
+            android:name=".MapaStudent"
             android:label="@string/title_activity_mapa_driver" />
-        <activity android:name=".ingresar_driver" />
-        <activity android:name=".registro_driver" />
+        <activity android:name=".ingresar_student" />
+        <activity android:name=".registro_student" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

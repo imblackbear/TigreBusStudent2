@@ -44,7 +44,7 @@ public class Perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         //Cambiar el valor del contador para se cancele al entrar en esta actitivy
-        MapaDriver.cancelar = true;
+        MapaStudent.cancelar = true;
 
         //instaciar textview
         txt_nombre = (TextView)findViewById(R.id.txtview_nombre);
@@ -83,7 +83,7 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               //MapaDriver zerrar = new MapaDriver();
+               //MapaStudent zerrar = new MapaStudent();
                //zerrar.cerrarsesion = true;
                //zerrar = true;
                mAuth.signOut();
@@ -97,7 +97,7 @@ public class Perfil extends AppCompatActivity {
 
         //recibir los valores
         String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Usuarios").child("Conductores").child(id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Usuarios").child("Alumnos").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //obtener valores
@@ -108,15 +108,13 @@ public class Perfil extends AppCompatActivity {
                     String apellidos = dataSnapshot.child("Apellidos").getValue().toString();
                     String correo = dataSnapshot.child("Correo").getValue().toString();
                     String telefono =dataSnapshot.child("Telefono").getValue().toString();
-                    String num_empleado = dataSnapshot.child("Num empleado").getValue().toString();
+                    String matricula = dataSnapshot.child("Matricula").getValue().toString();
 
                     //ponerlo en el TextView
                     txt_nombre.setText(" " + nombre + " " + apellidos);
                     txt_correo.setText(correo);
                     txt_telefono.setText(telefono);
-                    txt_num_empleado.setText(num_empleado);
-
-
+                    txt_num_empleado.setText(matricula);
 
 
                 }
@@ -151,7 +149,7 @@ public class Perfil extends AppCompatActivity {
             // casos dependiendo que se ha seleccionado
             /*
             case R.id.menu_mapa:
-                startActivity(new Intent(getApplicationContext(),MapaDriver.class));
+                startActivity(new Intent(getApplicationContext(),MapaStudent.class));
                 break;
 
             */

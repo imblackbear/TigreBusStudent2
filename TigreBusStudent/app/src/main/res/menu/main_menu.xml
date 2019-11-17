@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/menu_switch"
-        android:title="ola"
-        app:actionViewClass="android.widget.Switch"
-        app:showAsAction="always"
-        android:actionLayout="@layout/switch_layout">
-    </item>
-
 
 
     <item android:id="@+id/menu_perfil"
@@ -18,13 +10,17 @@
         android:title="Perfil"
         android:icon="@drawable/ic_perfil"/>
 
+    <item android:id="@+id/menu_informacion"
+        app:showAsAction="always"
+        android:title="Perfil"
+        android:icon="@drawable/ic_acercade"/>
 
 
 
     <item
         android:id="@+id/vacio"
         android:title="conf"
-        android:icon="@drawable/ic_paradatigrebus"
+        android:icon="@drawable/ic_paradatigrebus90"
         android:orderInCategory="101"
         app:showAsAction="always">
 

@@ -2,7 +2,6 @@ package com.example.tigrebusstudent;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -13,15 +12,12 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.view.MenuItemCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -46,8 +42,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
 
-public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
+
+public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback{
 
     private FusedLocationProviderClient fusedLocationClient;
     private int MY_PERMISSIONS_REQUESTREAD_CONTACTS;
@@ -79,7 +77,7 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            setContentView(R.layout.activity_mapa_driver);
+            setContentView(R.layout.activity_mapa_student);
 
             //
             checked=true;
@@ -109,19 +107,13 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-            //TITULO TOOLBAR
-            getSupportActionBar().setTitle("Estado:");
-            getSupportActionBar().setSubtitle("Desconectado");
-
-
-
-            //SWITCH
-            Switch bottons = (Switch)findViewById(R.id.id_switch);
 
 
 
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mAuth = FirebaseAuth.getInstance();
+
+            //
 
 
 
@@ -132,12 +124,11 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
     //metodo para subir la latiud y longitud cada x tiempo
     public void contador() {
-        if (checked == false) {
 
         if (realTimeTimer != null) {
             realTimeTimer.cancel();
         }
-        realTimeTimer = new CountDownTimer(15000, 1000) {
+        realTimeTimer = new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Log.e("seconds remaining: ", "" + millisUntilFinished / 1000);
@@ -148,11 +139,10 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
                 //Comprobacion para cerrar la sesion
                 if (Perfil.zerrar == true) {
-                    Toast.makeText(MapaDriver.this, "Cerraste sesion", Toast.LENGTH_SHORT).show();
                     iniciarcu = true;
 
                 } else {
-                    Toast.makeText(MapaDriver.this, "Puntos Actualizados", Toast.LENGTH_SHORT).show();
+                    Toasty.info(MapaStudent.this, "Puntos Actualizados", Toast.LENGTH_SHORT).show();
                     if (realTimeTimer != null) {
                         realTimeTimer.cancel();
                     }
@@ -165,7 +155,6 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
             }
         }.start();
     }
-    }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -174,7 +163,7 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MapaDriver.this,
+            ActivityCompat.requestPermissions(MapaStudent.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUESTREAD_CONTACTS);
             return;
@@ -197,10 +186,10 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
 
                             String id = mAuth.getCurrentUser().getUid();
-                            mDatabase.child("Usuarios").child("Conductores").child(id).updateChildren(LatitudLongitud);
+                            mDatabase.child("Usuarios").child("Alumnos").child(id).updateChildren(LatitudLongitud);
 
 
-                            Toast.makeText(MapaDriver.this, "Recibio", Toast.LENGTH_SHORT).show();
+                            Toasty.info(MapaStudent.this, "Recibio", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -241,7 +230,9 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
         ////////////////////////////
         //entrar a latlng en firebase
-        EntarEnLatLngFirebase();
+
+         EntarEnLatLngFirebase();
+
         ////////////////////////////
 
 
@@ -251,6 +242,7 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
     }
 //////////////////AQGRDRRR
+
     private void EntarEnLatLngFirebase() {
         mDatabase.child("Usuarios").child("Conductores").addListenerForSingleValueEvent(new ValueEventListener() {
             //obtiene los datos cada vez que hay un cambio
@@ -261,7 +253,7 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
                     marker2.remove();
                 }
 
-                //obtener datos de cada nodo hijo de Conductores
+                //obtener datos de cada nodo hijo de conductores
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
 
                     //obtener latitud y longitud
@@ -271,24 +263,22 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
 
 
                     //se agregan al marker y se posiciona
-                   //  MarkerOptions marker = new MarkerOptions().position(new LatLng(Latitud,Longitud))
-                    //        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_tigrebus1_foreground)); //se agrega el icono
+                    //MarkerOptions marker = new MarkerOptions().position(new LatLng(Latitud,Longitud))
+                       //     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_tigrebus1_foreground)); //se agrega el icono
 
 
-                    Marker markerp = mMap.addMarker(new MarkerOptions().position(new LatLng(Latitud,Longitud)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_tigrebus1_foreground)));
+                   Marker markerp = mMap.addMarker(new MarkerOptions().position(new LatLng(Latitud,Longitud)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_tigrebus1_foreground)));
                     realtimeMarkers.add(markerp);
 
                     eliminarmarker.add(markerp);
 
-                    //realtimeMarkers.add(mMap.addMarker(marker));
+                   // realtimeMarkers.add(mMap.addMarker(marker));
 
 
                 }
 
-
                 realtimeMarkers2.clear();
                 realtimeMarkers2.addAll(realtimeMarkers);
-
 
 
                 if (cancelar == false){
@@ -307,6 +297,7 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
             }
         });
     }
+
 
     //Iniciar el mapa en CU
     private void iniciarenCU(GoogleMap googleMap) {
@@ -328,41 +319,6 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
     //Menu toolbar
     public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.main_menu,menu);
-        //SWITCH
-        final MenuItem switchservice = menu.findItem(R.id.menu_switch);
-        final  Switch actionView = (Switch) MenuItemCompat.getActionView(switchservice);//final quitar
-
-        SharedPreferences sp = getSharedPreferences("guardar",MODE_PRIVATE);
-
-        //ESTRADOS DEL CONDUCTOR
-        actionView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    //
-                    SharedPreferences.Editor editor = getSharedPreferences("guardar",MODE_PRIVATE).edit();
-                    editor.putBoolean("value",true);
-                    editor.apply();
-                    actionView.setChecked(true);
-                    checked=false;
-                    contador();
-                    getSupportActionBar().setSubtitle("En línea ");
-
-                }else {
-                    //Eliminar LatLang de FireBase
-                    String id = mAuth.getCurrentUser().getUid();
-                    for(Marker remove:eliminarmarker){
-                        remove.remove();
-                    }
-                    mDatabase.child("Usuarios").child("Conductores").child(id).child("Latitud").removeValue();
-                    mDatabase.child("Usuarios").child("Conductores").child(id).child("Longitud").removeValue();
-
-                    realTimeTimer.cancel();
-                    getSupportActionBar().setSubtitle("Desconectado");
-                }
-            }
-        });
-
 
         return true;
     }
@@ -379,6 +335,9 @@ public class MapaDriver extends AppCompatActivity implements OnMapReadyCallback{
                 startActivity(new Intent(getApplicationContext(),Perfil.class));
                 break;
 
+            //
+            case R.id.menu_informacion:
+                break;
             //
             case R.id.menu_rCA:
                m_CienciasAgropecuarias();

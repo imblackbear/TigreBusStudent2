@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".ingresar_driver">
+    tools:context=".ingresar_student">
 
     <Button
         android:id="@+id/bt_ingresar2"

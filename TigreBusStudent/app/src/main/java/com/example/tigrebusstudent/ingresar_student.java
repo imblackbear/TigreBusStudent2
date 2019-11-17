@@ -18,7 +18,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ingresar_driver extends AppCompatActivity {
+import es.dmoral.toasty.Toasty;
+
+public class ingresar_student extends AppCompatActivity {
 
     private EditText et_correo,et_password;
     private Button bt_ingresar;
@@ -34,7 +36,7 @@ public class ingresar_driver extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ingresar_driver);
+        setContentView(R.layout.ingresar_student);
 
         //instanciar
         et_correo =(EditText)findViewById(R.id.txt_correo2);
@@ -61,7 +63,7 @@ public class ingresar_driver extends AppCompatActivity {
                     ingresarDriver();
                     
                 }else {
-                    Toast.makeText(ingresar_driver.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(getApplicationContext(),"Complete todos los campos",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -71,9 +73,7 @@ public class ingresar_driver extends AppCompatActivity {
     }
 
 
-
     private void ingresarDriver(){
-
 
                     Auth.signInWithEmailAndPassword(correo, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -83,18 +83,17 @@ public class ingresar_driver extends AppCompatActivity {
                                 //comprobacion para comprobar si el correo ya fue verificado
                                 if (usuario.isEmailVerified()){
 
-                                    Intent inicio = new Intent(getApplicationContext(), MapaDriver.class);
+                                    Intent inicio = new Intent(getApplicationContext(), MapaStudent.class);
                                     startActivity(inicio);
 
                                 }else {
-                                    Toast.makeText(ingresar_driver.this, "Correo no verificado", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(ingresar_driver.this,MainActivity.class));
+                                    Toasty.warning(ingresar_student.this, "Correo no verificado", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(ingresar_student.this,MainActivity.class));
                                 }
 
                             } else {
-                                Toast.makeText(ingresar_driver.this, "No se pudo iniciar sesion, complete los datos", Toast.LENGTH_SHORT).show();
+                                Toasty.error(ingresar_student.this, "No se pudo iniciar sesion, complete los datos", Toast.LENGTH_LONG).show();
                             }
-
 
                         }
                     });
