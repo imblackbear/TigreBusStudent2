@@ -93,9 +93,9 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_mapa_student);
 
+
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mAuth = FirebaseAuth.getInstance();
-
 
         //
             checked=true;
@@ -104,12 +104,25 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             enviarubi = (FloatingActionButton)findViewById(R.id.bt_enviarubi);
 
 
+
             //Obtener numero guardado en FireBase
             String idalumno = mAuth.getCurrentUser().getUid();
             mDatabase.child("Usuarios").child("Alumnos").child(idalumno).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
+
+                    /*
+                    if (telefonoeme!=null){
+                       telefonoeme = dataSnapshot.child("Telefono").getValue().toString();
+                    }else {
+                       telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                    }
+
+                     */
+
+
+
 
                     telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
                     Latitud = dataSnapshot.child("Latitud").getValue().toString();
@@ -129,8 +142,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-              //METODO PARA ENVIAR LA ULTIMA UBICACION
-
+            //METODO PARA ENVIAR LA ULTIMA UBICACION
 
              enviarubi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +156,8 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -170,8 +184,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
 
 
@@ -467,6 +479,8 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
     }
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

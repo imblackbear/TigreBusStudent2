@@ -3,6 +3,7 @@ package com.example.tigrebusstudent;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //FirebaseAuth mAuth;
     //DatabaseReference mDatabase;
 
+    final  private int REQUEST_CODE_ASK_PERMISSION=111;
 
 
     @Override
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         Database = FirebaseDatabase.getInstance().getReference();
 
 
+        solicitarpermisos();
+        /*
         //PERMISOS
         //PERMISO UBICACION
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 }else {
 
         }
+
+         */
 
 
         //regresar valores para que funcione
@@ -105,4 +111,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void solicitarpermisos(){
+        int permisofinelocation = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION);
+        int permisocoarselocation = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION);
+        int permisoenviarsms = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.SEND_SMS);
+        int permisoleersms = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.READ_SMS);
+        int permisorecibirsms = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.RECEIVE_SMS);
+
+        if (permisocoarselocation != PackageManager.PERMISSION_GRANTED || permisofinelocation != PackageManager.PERMISSION_GRANTED || permisoenviarsms != PackageManager.PERMISSION_GRANTED ||
+                permisoleersms != PackageManager.PERMISSION_GRANTED || permisorecibirsms != PackageManager.PERMISSION_GRANTED){
+
+            if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.SEND_SMS,
+                Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS},REQUEST_CODE_ASK_PERMISSION);
+            }
+
+        }
+
+    }
+
 }

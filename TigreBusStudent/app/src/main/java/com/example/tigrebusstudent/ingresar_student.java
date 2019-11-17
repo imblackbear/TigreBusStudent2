@@ -81,15 +81,16 @@ public class ingresar_student extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser usuario = Auth.getCurrentUser();
                                 //comprobacion para comprobar si el correo ya fue verificado
-                                if (usuario.isEmailVerified()){
 
-                                    Intent inicio = new Intent(getApplicationContext(), MapaStudent.class);
-                                    startActivity(inicio);
+                                    if (usuario.isEmailVerified()){
 
-                                }else {
-                                    Toasty.warning(ingresar_student.this, "Correo no verificado", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(ingresar_student.this,MainActivity.class));
-                                }
+                                        Intent inicio = new Intent(getApplicationContext(), MapaStudent.class);
+                                        startActivity(inicio);
+
+                                    }else {
+                                        Toasty.warning(ingresar_student.this, "Correo no verificado", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(ingresar_student.this,MainActivity.class));
+                                    }
 
                             } else {
                                 Toasty.error(ingresar_student.this, "No se pudo iniciar sesion, complete los datos", Toast.LENGTH_LONG).show();
@@ -103,10 +104,7 @@ public class ingresar_student extends AppCompatActivity {
 
     }
 
-
-
 //
-
 
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,18 @@ public class Perfil extends AppCompatActivity {
 
     //Variable para usar en el if del contador y parar el metodo
     static boolean zerrar;
+
+    static String telefonohint;
+
+    /*
+    static String num;
+    static String lat;
+    static String lng;
+
+
+
+
+     */
 
     //guardar telefono
     EditText et_telefonoeme;
@@ -92,8 +105,16 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
+                    /*
+                    if (telefonohint == null){
+                        telefonohint = dataSnapshot.child("Telefono").getValue().toString();
+                    }else {
+                        telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                    }
 
-                    String telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                     */
+
+                    telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
                     et_telefonoeme.setHint("Teléfono guardado: " + telefonohint);
 
                 }
@@ -137,6 +158,8 @@ public class Perfil extends AppCompatActivity {
         });
 
 
+
+        /*
         //recibir los valores
         String id1 = mAuth.getCurrentUser().getUid();
         mDatabase.child("Usuarios").child("Alumnos").child(id1).addValueEventListener(new ValueEventListener() {
@@ -158,6 +181,9 @@ public class Perfil extends AppCompatActivity {
                     //txt_telefono.setText(telefono);
                     //txt_num_empleado.setText(matricula);
 
+                   // num = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                   // lat = dataSnapshot.child("Latitud").getValue().toString();
+                   // lng = dataSnapshot.child("Longitud").getValue().toString();
 
                 }
 
@@ -171,17 +197,20 @@ public class Perfil extends AppCompatActivity {
         });
 
 
+         */
+
+
     }
 /////////////////////////////////////////////////////////////////////
-    /*
-    AGREGAR SI HAY ICONOS EN LA TOOLBAR
-        Menu toolbar
+
+    //AGREGAR SI HAY ICONOS EN LA TOOLBAR
+        //Menu toolbar
         public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.menu_perfil,menu);
+
         return true;
     }
 
-     */
 ////////////////////////////////////////////////////////////
     //Metodo para seleccionar ccada item del toolbar
     public boolean onOptionsItemSelected (MenuItem menuItem){
@@ -189,12 +218,11 @@ public class Perfil extends AppCompatActivity {
         switch (menuItem.getItemId()){
 
             // casos dependiendo que se ha seleccionado
-            /*
-            case R.id.menu_mapa:
-                startActivity(new Intent(getApplicationContext(),MapaStudent.class));
+
+            case R.id.menu_informacion3:
+                startActivity(new Intent(getApplicationContext(),info.class));
                 break;
 
-            */
 
             //flecha android
             case android.R.id.home:

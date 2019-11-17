@@ -92,7 +92,7 @@
 
 
     <string name="st_advertencia"> Configura un número teléfonico para enviar tu ultima ubicación</string>
-    <string name="st_guardar">Guardar</string>
+    <string name="st_guardar">Actualizar</string>
 
     <string name="st_advertencia2">Para enviar tu ultima ubicación al teléfono guardado debes presionar 5 veces el botón de advertencia que se encuentra en la interfaz del mapa</string>
 

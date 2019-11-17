@@ -16,7 +16,6 @@
         android:icon="@drawable/ic_acercade"/>
 
 
-
     <item
         android:id="@+id/vacio"
         android:title="conf"

@@ -26,7 +26,7 @@ import es.dmoral.toasty.Toasty;
 
 public class registro_student extends AppCompatActivity {
     //referencias de cada campo del XML
-    private EditText txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
+    private EditText  txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
     private Button bt_registrar, bt_iniciarse;
     private ProgressDialog progressDialog;      //declarando variable PD
 
@@ -38,6 +38,7 @@ public class registro_student extends AppCompatActivity {
     private String telefono = "";
     private String correo = "";
     private String password = "";
+
 
     //Objeto de FireBase
     FirebaseAuth Auth;
@@ -65,9 +66,10 @@ public class registro_student extends AppCompatActivity {
         txt_nombre = (EditText)findViewById(R.id.et_nombre2);
         txt_apellidos = (EditText)findViewById(R.id.et_apellidos2);
         txt_carrera = (EditText)findViewById(R.id.et_carrera2);
-        txt_telefono = (EditText)findViewById(R.id.et_telefono2);
+        txt_telefono = (EditText)findViewById(R.id.et_telefono);
         txt_correo = (EditText)findViewById(R.id.et_correo2);
         txt_password = (EditText)findViewById(R.id.et_password2);
+
         bt_registrar = (Button)findViewById(R.id.bt_registrarse2);
         bt_iniciarse = (Button)findViewById(R.id.bt_iniciarse);
 
