@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanco"
+    tools:context=".info">
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+               <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/azul"
+                android:text="@string/in_tigrebus"
+                android:fontFamily="@font/bold"
+                 android:textSize="18sp"/>
+
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/descripcion1Anno245"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:text="@string/info_tigrebus"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/regular"
+                    android:textColor="@color/negro"
+                    />
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/azul"
+                android:text="@string/in_horario"
+                android:fontFamily="@font/bold"
+                android:textSize="18sp"/>
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/descripcion1Anno45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/info_horario"
+                android:textSize="15sp"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/negro"
+                />
+
+                <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/azul"
+                android:text="@string/in_aviso"
+                    android:fontFamily="@font/bold"
+                    android:textSize="18sp"/>
+
+
+                <com.codesgood.views.JustifiedTextView
+                android:id="@+id/descripcion1Ann345o2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/info_aviso"
+                    android:fontFamily="@font/regular"
+                    android:textColor="@color/negro"
+                android:textSize="15sp" />
+
+                <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/azul"
+                android:text="@string/in_recorridos"
+                    android:fontFamily="@font/bold"
+                    android:textSize="18sp"/>
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/descripc34ion1Ann345o2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/info_recorridos"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/negro"
+                android:textSize="15sp" />
+
+
+                <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/in_reglamento"
+                android:textColor="@color/azul"
+                    android:fontFamily="@font/bold"
+                    android:textSize="18sp"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/descripcion1Ann4345o2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/info_reglamento"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/negro"
+                android:textSize="15sp" />
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/azul"
+                android:text="@string/in_soporte"
+                android:fontFamily="@font/bold"
+                android:textSize="18sp"/>
+
+
+                <com.codesgood.views.JustifiedTextView
+                android:id="@+id/descripcion1An3434no2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/info_soporte"
+                    android:fontFamily="@font/regular"
+                    android:textColor="@color/negro"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+

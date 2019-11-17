@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Auth = FirebaseAuth.getInstance();
         Database = FirebaseDatabase.getInstance().getReference();
 
+
+        //PERMISOS
+        //PERMISO UBICACION
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -40,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
                     MY_PERMISSIONS_REQUESTREAD_CONTACTS);
             return;
         }
+
+        //PERMISO ENVIAR SMS
+        if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED ){ActivityCompat.requestPermissions(MainActivity.this,new String []
+                {
+                        Manifest.permission.SEND_SMS,
+                },1000);
+
+                }else {
+
+        }
+
 
         //regresar valores para que funcione
         MapaStudent.cancelar = false;

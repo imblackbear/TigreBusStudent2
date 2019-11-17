@@ -39,5 +39,10 @@ dependencies {
     //toast personalizado
     implementation 'com.github.GrenderG:Toasty:1.4.2'
 
+    //cardview
+    implementation 'com.android.support:cardview-v7:29.0.0'
+
+    implementation 'com.codesgood:justifiedtextview:1.1.0' //Justificar texto
+
 }
 apply plugin: 'com.google.gms.google-services'

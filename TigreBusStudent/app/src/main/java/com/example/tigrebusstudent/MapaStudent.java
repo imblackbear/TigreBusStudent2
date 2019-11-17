@@ -9,9 +9,11 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,8 +54,15 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     private int MY_PERMISSIONS_REQUESTREAD_CONTACTS;
 
 
+    //BOTON FLOTANTE
+    FloatingActionButton enviarubi;
+    int clicContador =0;
+    int maximo=5;
+
+
     static boolean checked = false;
     static boolean cancelar = false;
+
     //array para almacenar los markadores e irlos eliminando
     private ArrayList<Marker> realtimeMarkers = new ArrayList<>();
     private ArrayList<Marker> realtimeMarkers2 = new ArrayList<>();
@@ -60,6 +70,11 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     private ArrayList<Marker> eliminarmarker = new ArrayList<>();
 
     static CountDownTimer realTimeTimer;
+
+    //Variable para guardar el telefono
+     String telefonoeme;
+     String Latitud;
+     String Longitud;
 
     //referencias de FireBase
     DatabaseReference mDatabase;
@@ -76,12 +91,61 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
             setContentView(R.layout.activity_mapa_student);
 
-            //
-            checked=true;
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mAuth = FirebaseAuth.getInstance();
 
+
+        //
+            checked=true;
+////////////////////////////////////////////////////////////////////////////////////////
+            //BOTON FLOTANTE
+            enviarubi = (FloatingActionButton)findViewById(R.id.bt_enviarubi);
+
+
+            //Obtener numero guardado en FireBase
+            String idalumno = mAuth.getCurrentUser().getUid();
+            mDatabase.child("Usuarios").child("Alumnos").child(idalumno).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+
+                    telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                    Latitud = dataSnapshot.child("Latitud").getValue().toString();
+                    Longitud = dataSnapshot.child("Longitud").getValue().toString();
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+              //METODO PARA ENVIAR LA ULTIMA UBICACION
+
+
+             enviarubi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicContador ++;
+                if(clicContador == maximo)
+                {
+                   enviarubi(telefonoeme,"Esta es mi ultima ubicacion: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud);
+                   clicContador = 0;
+                }
+
+            }
+        });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
@@ -110,10 +174,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            mAuth = FirebaseAuth.getInstance();
-
-            //
 
 
 
@@ -128,7 +188,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
         if (realTimeTimer != null) {
             realTimeTimer.cancel();
         }
-        realTimeTimer = new CountDownTimer(5000, 1000) {
+        realTimeTimer = new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Log.e("seconds remaining: ", "" + millisUntilFinished / 1000);
@@ -337,6 +397,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
             //
             case R.id.menu_informacion:
+                startActivity(new Intent(getApplicationContext(),info.class));
                 break;
             //
             case R.id.menu_rCA:
@@ -395,6 +456,17 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
 
 
+    private void enviarubi(String numero,String mensaje){
+        try{
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(numero,null,mensaje,null,null);
+            Toasty.warning(getApplicationContext(),"Ultima ubicación enviada",Toasty.LENGTH_SHORT).show();
+
+        }catch (Exception e){
+            Toasty.error(getApplicationContext(),"No se logro enviar la ubicaci;on",Toasty.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

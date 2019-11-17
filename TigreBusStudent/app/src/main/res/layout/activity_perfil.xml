@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_perfil"
+    android:background="@color/blanco"
     tools:context=".Perfil">
 
     <androidx.appcompat.widget.Toolbar
@@ -17,131 +17,94 @@
 
     <Button
         android:id="@+id/bt_cerrarsesion2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/boton_amarillo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="125dp"
+        android:background="@drawable/boton_azul"
         android:fontFamily="@font/bold"
         android:text="Cerrar sesión"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_nombrep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="275dp"
-        android:fontFamily="@font/bold"
-        android:text="@string/txt_nombre"
-        android:textColor="@color/azul"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <TextView
-        android:id="@+id/txt_correop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="293dp"
-        android:fontFamily="@font/bold"
-        android:text="Correo:"
-        android:textColor="@color/azul"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview_nombre" />
-
-    <TextView
-        android:id="@+id/txt_telefonop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="116dp"
-        android:fontFamily="@font/bold"
-        android:text="@string/txt_telefono"
-        android:textColor="@color/azul"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/txt_num_empleadop"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview_correo" />
-
-    <TextView
-        android:id="@+id/txt_num_empleadop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="80dp"
-        android:fontFamily="@font/bold"
-        android:text="@string/txt_matricula"
-        android:textColor="@color/azul"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview_correo" />
-
-    <TextView
-        android:id="@+id/txtview_nombre"
-        android:layout_width="297dp"
-        android:layout_height="27dp"
-        android:fontFamily="@font/regular"
-        android:text=""
-        android:textColor="@color/negro"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombrep" />
-
-    <TextView
-        android:id="@+id/txtview_telefono"
-        android:layout_width="143dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="48dp"
-        android:fontFamily="@font/regular"
-        android:text=""
-        android:textColor="@color/negro"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/txtview_num_empleado"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_telefonop" />
-
-    <TextView
-        android:id="@+id/txtview_num_empleado"
-        android:layout_width="146dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/regular"
-        android:text=""
-        android:textColor="@color/negro"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_num_empleadop" />
-
-    <TextView
-        android:id="@+id/txtview_correo"
-        android:layout_width="301dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="53dp"
-        android:fontFamily="@font/regular"
-        android:text=""
-        android:textColor="@color/negro"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_correop" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_guardar" />
+
+    <Button
+        android:id="@+id/bt_guardar"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="17dp"
+        android:background="@drawable/boton_amarillo"
+        android:fontFamily="@font/bold"
+        android:text="@string/st_guardar"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtview_advertencia2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefonoeme" />
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/txtview_advertencia"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/bold"
+        android:text="@string/st_advertencia"
+        android:textColor="@color/negro"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/txtview_advertencia2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/bold"
+        android:text="@string/st_advertencia2"
+        android:textColor="@color/azul"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefonoeme" />
+
+    <EditText
+        android:id="@+id/txt_telefonoeme"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/boton_transparente"
+        android:fontFamily="@font/bold"
+        android:hint="@string/txt_telefono"
+        android:inputType="number"
+        android:text=""
+        android:textColor="@color/gris"
+        android:textColorHint="@color/gris"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtview_advertencia" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/tigrebus_logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

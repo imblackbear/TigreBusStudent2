@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import es.dmoral.toasty.Toasty;
 
 public class Perfil extends AppCompatActivity {
 
@@ -33,6 +36,10 @@ public class Perfil extends AppCompatActivity {
     //Variable para usar en el if del contador y parar el metodo
     static boolean zerrar;
 
+    //guardar telefono
+    EditText et_telefonoeme;
+    Button btn_guardar;
+
     //referencias de FireBase
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
@@ -43,14 +50,24 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        //firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
         //Cambiar el valor del contador para se cancele al entrar en esta actitivy
         MapaStudent.cancelar = true;
 
         //instaciar textview
-        txt_nombre = (TextView)findViewById(R.id.txtview_nombre);
-        txt_correo = (TextView)findViewById(R.id.txtview_correo);
-        txt_telefono = (TextView)findViewById(R.id.txtview_telefono);
-        txt_num_empleado = (TextView)findViewById(R.id.txtview_num_empleado);
+        //txt_nombre = (TextView)findViewById(R.id.txtview_nombre);
+        //txt_correo = (TextView)findViewById(R.id.txtview_correo);
+        //txt_telefono = (TextView)findViewById(R.id.txtview_telefono);
+        //txt_num_empleado = (TextView)findViewById(R.id.txtview_num_empleado);
+
+
+        //GUARDAR TELEFONO
+        et_telefonoeme = (EditText)findViewById(R.id.txt_telefonoeme);
+        btn_guardar = (Button)findViewById(R.id.bt_guardar);
+
 
 
         //toolbar
@@ -69,11 +86,36 @@ public class Perfil extends AppCompatActivity {
             getWindow().setStatusBarColor(myColor);
         }
 
+        //PONER EL TELEFONO EN HINT GUARDADO ANTERIORMENTE
+        String id = mAuth.getCurrentUser().getUid();
+        mDatabase.child("Usuarios").child("Alumnos").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
 
+                    String telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                    et_telefonoeme.setHint("Teléfono guardado: " + telefonohint);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //GUARDAR TELEFONO EMERGENCIA FIREBASE
+        btn_guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id2 = mAuth.getCurrentUser().getUid();
+                String telefonoadve = et_telefonoeme.getText().toString();
+                mDatabase.child("Usuarios").child("Alumnos").child(id2).child("Telefono de advertencia").setValue(telefonoadve);
+                Toasty.success(getApplicationContext(),"Teléfono guardado exitosamente.",Toasty.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
@@ -96,25 +138,25 @@ public class Perfil extends AppCompatActivity {
 
 
         //recibir los valores
-        String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Usuarios").child("Alumnos").child(id).addValueEventListener(new ValueEventListener() {
+        String id1 = mAuth.getCurrentUser().getUid();
+        mDatabase.child("Usuarios").child("Alumnos").child(id1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //obtener valores
 
                 if (dataSnapshot.exists()){
                     //obtener valores
-                    String nombre = dataSnapshot.child("Nombre").getValue().toString();
-                    String apellidos = dataSnapshot.child("Apellidos").getValue().toString();
-                    String correo = dataSnapshot.child("Correo").getValue().toString();
-                    String telefono =dataSnapshot.child("Telefono").getValue().toString();
-                    String matricula = dataSnapshot.child("Matricula").getValue().toString();
+                    //String nombre = dataSnapshot.child("Nombre").getValue().toString();
+                    //String apellidos = dataSnapshot.child("Apellidos").getValue().toString();
+                    //String correo = dataSnapshot.child("Correo").getValue().toString();
+                    //String telefono =dataSnapshot.child("Telefono").getValue().toString();
+                    //String matricula = dataSnapshot.child("Matricula").getValue().toString();
 
                     //ponerlo en el TextView
-                    txt_nombre.setText(" " + nombre + " " + apellidos);
-                    txt_correo.setText(correo);
-                    txt_telefono.setText(telefono);
-                    txt_num_empleado.setText(matricula);
+                    //txt_nombre.setText(" " + nombre + " " + apellidos);
+                    //txt_correo.setText(correo);
+                    //txt_telefono.setText(telefono);
+                    //txt_num_empleado.setText(matricula);
 
 
                 }

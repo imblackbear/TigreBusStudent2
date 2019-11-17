@@ -47,6 +47,55 @@
 
 
 
+
+    <!--- Strings del apartado de informacion -->
+    <string name="in_tigrebus">• TigreBus</string>
+    <string name="info_tigrebus">La aplicación TigreBus es una herramienta dirigida hacia los estudiantes de la UANL, la cual otorga una mayor seguridad al momento de tomar el transporte gratuito que la universidad proporciona a sus alumnos, además brinda diferentes funciones que permiten facilitar el proceso de movilidad de este medio de transporte.</string>
+
+    <string name="in_horario">• Horario</string>
+    <string name="info_horario">El horario del TigreBus es de lunes a viernes de 6:45 hasta las 22:00 horas</string>
+
+    <string name="in_aviso">• Aviso de privacidad</string>
+    <string name="info_aviso">TigreBus es una aplicación que permite conocer la ubicación de las diferentes unidades en tiempo real, la cual hace uso de la ubicación del usuario para que se pueda determinar cuáles son las paradas del autobús mas cercanas a el y así pueda decidir qué unidad abordar. </string>
+
+    <string name="in_rutas">Rutas del TigreBus</string>
+    <string name="info_rutas">El transporte TigreBus cuenta con diferentes recorridos para abarcar una amplia zona y poder brindarles el servicio a más personas.</string>
+
+
+    <string name="in_recorridos">• Recorridos</string>
+    <string name="info_recorridos">\n
+    •	Campus Ciudad Universitaria\n
+    •	Campus Ciencias Agropecuarias\n
+    •	Campus Unidad Maderos\n
+    •	Campus Ciencias de la Salud\n
+
+    </string>
+
+
+    <string name="in_reglamento">• Reglamento</string>
+    <string name="info_reglamento">\n
+    •	Formar fila para abordar.\n
+    •	Ascender y descender sólo en paradas oficiales.\n
+    •	Preferencia a personas con discapacidad.\n
+    •	No subir con bebidas y/o alimentos.\n
+    •	No tirar basura\n
+    </string>
+
+
+    <string name="in_soporte">• Soporte</string>
+    <string name="info_soporte">
+        Para dudas, aclaraciones o reporte de incidencia,  contáctanos a través de:\n
+        •   Correo electrónico: tigrebus@uanl.mx\n
+        •   Teléfono: 8329 4000 ext. 5411\n
+        Mencionando el número de unidad, área y hora del reporte.\n
+    </string>
+
+
+    <string name="st_advertencia"> Configura un número teléfonico para enviar tu ultima ubicación</string>
+    <string name="st_guardar">Guardar</string>
+
+    <string name="st_advertencia2">Para enviar tu ultima ubicación al teléfono guardado debes presionar 5 veces el botón de advertencia que se encuentra en la interfaz del mapa</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
