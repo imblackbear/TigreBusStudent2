@@ -466,6 +466,43 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                 .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
     }
 
+    //MARCADORES DE CIUDAD UNIVERSITARIA
+    private void m_CiudadUniversitaria(){
+
+        //PARADA 1
+        LatLng parada1 = new LatLng(25.768954,-100.293153);
+        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
+
+
+
+        //PARADA 2
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.781568,-100.292435))
+                .title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        //PARADA 3
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.784287,-100.285917))
+                .title("Parada oficial #3").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 4
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.783325,-100.286812))
+                .title("Parada oficial #4").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 5
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.784779,-100.287254))
+                .title("Parada oficial #5").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 6
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.785772,-100.287172))
+                .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+    }
+
+
 
 
     private void enviarubi(String numero,String mensaje){

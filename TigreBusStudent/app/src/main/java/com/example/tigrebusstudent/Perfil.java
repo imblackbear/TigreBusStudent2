@@ -64,12 +64,6 @@ public class Perfil extends AppCompatActivity {
         //Cambiar el valor del contador para se cancele al entrar en esta actitivy
         MapaStudent.cancelar = true;
 
-        //instaciar textview
-        //txt_nombre = (TextView)findViewById(R.id.txtview_nombre);
-        //txt_correo = (TextView)findViewById(R.id.txtview_correo);
-        //txt_telefono = (TextView)findViewById(R.id.txtview_telefono);
-        //txt_num_empleado = (TextView)findViewById(R.id.txtview_num_empleado);
-
 
         //GUARDAR TELEFONO
         et_telefonoeme = (EditText)findViewById(R.id.txt_telefonoeme);
@@ -112,14 +106,6 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    /*
-                    if (telefonohint == null){
-                        telefonohint = dataSnapshot.child("Telefono").getValue().toString();
-                    }else {
-                        telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
-                    }
-
-                     */
 
                     telefonohint = dataSnapshot.child("Telefono de advertencia").getValue().toString();
                     et_telefonoeme.setHint("Teléfono guardado: " + telefonohint);

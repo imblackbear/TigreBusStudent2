@@ -96,6 +96,10 @@
 
     <string name="st_advertencia2">Para enviar tu ultima ubicación al teléfono guardado debes presionar 5 veces el botón de advertencia que se encuentra en la interfaz del mapa</string>
 
+    <string name="st_telefonoad">Teléfono de advertencia:</string>
+    <string name="st_ad_info">El teléfono de advertencia es un numero al cual se le va a enviar tu ultima ubicación por un medio de un SMS por si en alguna situación te encuentras en peligro.\nAsegúrate de colocar bien el número y sin el código de país</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

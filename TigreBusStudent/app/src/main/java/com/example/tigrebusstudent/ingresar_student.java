@@ -1,6 +1,8 @@
 package com.example.tigrebusstudent;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +39,14 @@ public class ingresar_student extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingresar_student);
+
+        //Cambiar de color la barra de estado
+        int myColor = Color.parseColor("#00629F");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(myColor);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(myColor);
+        }
 
         //instanciar
         et_correo =(EditText)findViewById(R.id.txt_correo2);
@@ -101,8 +111,6 @@ public class ingresar_student extends AppCompatActivity {
 
 
     }
-
-//
 
 
 }

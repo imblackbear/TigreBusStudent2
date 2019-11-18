@@ -3,6 +3,7 @@ package com.example.tigrebusstudent;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         Auth = FirebaseAuth.getInstance();
         Database = FirebaseDatabase.getInstance().getReference();
+
+        //Cambiar de color la barra de estado
+        int myColor = Color.parseColor("#004D9F");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(myColor);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(myColor);
+        }
 
 
         solicitarpermisos();

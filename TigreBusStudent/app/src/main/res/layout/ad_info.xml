@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/blanco"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+
+
+
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:textColor="@color/azul"
+    android:textSize="20sp"
+    android:fontFamily="@font/bold"
+    style="@android:style/TextAppearance.Material.DialogWindowTitle"
+    android:text="Teléfono de advertencia "/>
+
+    <com.codesgood.views.JustifiedTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/negro"
+        android:layout_marginTop="0dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/regular"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/st_ad_info"/>
+    <Button
+        android:id="@+id/bt_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="Cerrar"
+        android:layout_gravity="end"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/amarillo"
+        />
+
+
+
+</LinearLayout>

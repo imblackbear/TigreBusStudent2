@@ -1,11 +1,19 @@
 package com.example.tigrebusstudent;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,16 +54,61 @@ public class registro_student extends AppCompatActivity {
     //Objeto para utilizar la base de datos Realtime de Database
     DatabaseReference Database;
 
+
+    //AlertDialog
+    private ImageButton alertDialog;
+    private ProgressDialog ad;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_student);
 
+        //Cambiar de color la barra de estado
+        int myColor = Color.parseColor("#00629F");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(myColor);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(myColor);
+        }
+
         //instanciar ProgressDialog
         this.progressDialog = new ProgressDialog(this);
+        this.ad = new ProgressDialog(this);
 
 
-                //instanciar el objeto de FireBase
+
+        //instanciar AlertDialog
+        alertDialog = (ImageButton)findViewById(R.id.ad_info);
+
+        //Creacion del AlrteDialog
+        alertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                AlertDialog.Builder alerta = new AlertDialog.Builder(registro_student.this);
+                alerta.setMessage("El teléfono de advertencia es un numero al cual se le va a enviar tu ultima ubicación por un medio de un SMS por si en alguna situación te encuentras en peligro, asegúrate de colocar bien el número y sin código de país. ")
+                        .setCancelable(true)
+
+                        .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog titulo = alerta.create();
+                titulo.setTitle("Teléfono de advertencia");
+                titulo.show();
+
+                 */
+                mostrarAD();
+
+            }
+        });
+
+
+        //instanciar el objeto de FireBase
         Auth = FirebaseAuth.getInstance();
 
         //instanciar objeto Database y hacer referencia al nodo principal de nuestra base de datos
@@ -183,6 +236,22 @@ public class registro_student extends AppCompatActivity {
        progressDialog.setCancelable(false);
        progressDialog.show();
        progressDialog.setContentView(R.layout.pdcontenido);
+    }
+
+    //creacion del ProgressDialog
+    private void mostrarAD(){
+        ad.setCancelable(true);
+        ad.show();
+        ad.setContentView(R.layout.ad_info);
+        Button ad_btn = ad.findViewById(R.id.bt_ad);
+        ad_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ad.dismiss();
+            }
+        });
+
+
     }
 
 }
