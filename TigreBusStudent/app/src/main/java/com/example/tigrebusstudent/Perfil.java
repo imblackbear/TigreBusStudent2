@@ -38,16 +38,10 @@ public class Perfil extends AppCompatActivity {
     static boolean zerrar;
 
     static String telefonohint;
-
-    /*
-    static String num;
     static String lat;
     static String lng;
 
 
-
-
-     */
 
     //guardar telefono
     EditText et_telefonoeme;
@@ -99,6 +93,19 @@ public class Perfil extends AppCompatActivity {
             getWindow().setStatusBarColor(myColor);
         }
 
+
+        //GUARDAR TELEFONO EMERGENCIA FIREBASE
+        btn_guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id2 = mAuth.getCurrentUser().getUid();
+                String telefonoadve = et_telefonoeme.getText().toString();
+                mDatabase.child("Usuarios").child("Alumnos").child(id2).child("Telefono de advertencia").setValue(telefonoadve);
+                Toasty.success(getApplicationContext(),"Teléfono guardado exitosamente.",Toasty.LENGTH_SHORT).show();
+
+            }
+        });
+
         //PONER EL TELEFONO EN HINT GUARDADO ANTERIORMENTE
         String id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Usuarios").child("Alumnos").child(id).addValueEventListener(new ValueEventListener() {
@@ -125,19 +132,6 @@ public class Perfil extends AppCompatActivity {
 
             }
         });
-
-        //GUARDAR TELEFONO EMERGENCIA FIREBASE
-        btn_guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id2 = mAuth.getCurrentUser().getUid();
-                String telefonoadve = et_telefonoeme.getText().toString();
-                mDatabase.child("Usuarios").child("Alumnos").child(id2).child("Telefono de advertencia").setValue(telefonoadve);
-                Toasty.success(getApplicationContext(),"Teléfono guardado exitosamente.",Toasty.LENGTH_SHORT).show();
-
-            }
-        });
-
 
 
         //METODO PARA CERRAR SESION

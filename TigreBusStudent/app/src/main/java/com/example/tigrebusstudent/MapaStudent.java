@@ -44,6 +44,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
@@ -57,11 +58,13 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     //BOTON FLOTANTE
     FloatingActionButton enviarubi;
     int clicContador =0;
+    int clicContador2 = 0;
     int maximo=5;
 
 
     static boolean checked = false;
     static boolean cancelar = false;
+
 
     //array para almacenar los markadores e irlos eliminando
     private ArrayList<Marker> realtimeMarkers = new ArrayList<>();
@@ -72,9 +75,9 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     static CountDownTimer realTimeTimer;
 
     //Variable para guardar el telefono
-     String telefonoeme;
-     String Latitud;
-     String Longitud;
+    String telefonoeme = "" ;
+     String Latitud = "";
+     String Longitud= "";
 
     //referencias de FireBase
     DatabaseReference mDatabase;
@@ -92,55 +95,46 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_mapa_student);
-
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mAuth = FirebaseAuth.getInstance();
 
-        //
+
+            //SUBIR LA LATITUD Y LOGINTUD AL INICIAR LA APP
+            fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            Log.e("Latitud: ",+ location.getLatitude()+"Longitud: "+location.getLongitude());
+
+
+                            Map<String,Object> LatitudLongitud = new HashMap<>();
+
+                            LatitudLongitud.put("Latitud",location.getLatitude());
+                            LatitudLongitud.put("Longitud",location.getLongitude());
+
+
+                            String id = mAuth.getCurrentUser().getUid();
+                            mDatabase.child("Usuarios").child("Alumnos").child(id).updateChildren(LatitudLongitud);
+
+
+                            Toasty.info(MapaStudent.this, "Recibio", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+             //
             checked=true;
-////////////////////////////////////////////////////////////////////////////////////////
+
             //BOTON FLOTANTE
             enviarubi = (FloatingActionButton)findViewById(R.id.bt_enviarubi);
 
 
-
-            //Obtener numero guardado en FireBase
-            String idalumno = mAuth.getCurrentUser().getUid();
-            mDatabase.child("Usuarios").child("Alumnos").child(idalumno).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-
-                    /*
-                    if (telefonoeme!=null){
-                       telefonoeme = dataSnapshot.child("Telefono").getValue().toString();
-                    }else {
-                       telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
-                    }
-
-                     */
-
-
-
-
-                    telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
-                    Latitud = dataSnapshot.child("Latitud").getValue().toString();
-                    Longitud = dataSnapshot.child("Longitud").getValue().toString();
-
-                }
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //METODO PARA ENVIAR LA ULTIMA UBICACION
 
@@ -148,23 +142,29 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 clicContador ++;
+                obtenervalores();
+                clicContador2 ++;
                 if(clicContador == maximo)
                 {
-                   enviarubi(telefonoeme,"Esta es mi ultima ubicacion: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud);
-                   clicContador = 0;
+
+                        enviarubi(telefonoeme,"Esta es mi ultima ubicacion: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud);
+                        clicContador = 0;
+
+                }
+                if(clicContador2 == 15){
+                    Toasty.warning(getApplicationContext(),"Realizar muchas veces esta accion consume tu saldo",Toast.LENGTH_SHORT).show();
+                    clicContador2 = 0;
                 }
 
             }
         });
 
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
             //Cambiar de color la barra de estado
              int myColor = Color.parseColor("#00629F");
@@ -230,7 +230,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void SubirLatitudLongitud() {
+    public void SubirLatitudLongitud() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -481,6 +481,35 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //OBTENER NUM, LAT Y LNG DE FIREBASE
+
+    public void obtenervalores(){
+
+            String id = mAuth.getCurrentUser().getUid();
+            mDatabase.child("Usuarios").child("Alumnos").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+
+                        telefonoeme = dataSnapshot.child("Telefono de advertencia").getValue().toString();
+                        Latitud = dataSnapshot.child("Latitud").getValue().toString();
+                        Longitud = dataSnapshot.child("Longitud").getValue().toString();
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -11,8 +11,7 @@
         android:id="@+id/bt_registrarse2"
         android:layout_width="140dp"
         android:layout_height="43dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="51dp"
         android:background="@drawable/boton_amarillo"
         android:fontFamily="@font/bold"
@@ -21,7 +20,6 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password2" />
 
     <EditText
@@ -98,6 +96,25 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_apellidos2" />
+
+    <EditText
+        android:id="@+id/et_telefonoeme"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="37dp"
+        android:background="@drawable/boton_transparente"
+        android:ems="10"
+        android:fontFamily="@font/bold"
+        android:hint="@string/txt_telefono"
+        android:inputType="number"
+        android:textColor="@color/gris"
+        android:textColorHint="@color/gris"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_registrarse2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password2" />
 
     <EditText
         android:id="@+id/et_correo2"

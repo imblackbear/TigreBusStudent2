@@ -80,8 +80,8 @@ public class ingresar_student extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser usuario = Auth.getCurrentUser();
-                                //comprobacion para comprobar si el correo ya fue verificado
 
+                                //comprobacion para comprobar si el correo ya fue verificado
                                     if (usuario.isEmailVerified()){
 
                                         Intent inicio = new Intent(getApplicationContext(), MapaStudent.class);
@@ -98,8 +98,6 @@ public class ingresar_student extends AppCompatActivity {
 
                         }
                     });
-
-
 
 
     }

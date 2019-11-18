@@ -26,7 +26,7 @@ import es.dmoral.toasty.Toasty;
 
 public class registro_student extends AppCompatActivity {
     //referencias de cada campo del XML
-    private EditText  txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
+    private EditText  txt_telefonoeme, txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
     private Button bt_registrar, bt_iniciarse;
     private ProgressDialog progressDialog;      //declarando variable PD
 
@@ -38,6 +38,7 @@ public class registro_student extends AppCompatActivity {
     private String telefono = "";
     private String correo = "";
     private String password = "";
+    private String telefonoeme= "";
 
 
     //Objeto de FireBase
@@ -69,6 +70,7 @@ public class registro_student extends AppCompatActivity {
         txt_telefono = (EditText)findViewById(R.id.et_telefono);
         txt_correo = (EditText)findViewById(R.id.et_correo2);
         txt_password = (EditText)findViewById(R.id.et_password2);
+        txt_telefonoeme = (EditText)findViewById(R.id.et_telefonoeme);
 
         bt_registrar = (Button)findViewById(R.id.bt_registrarse2);
         bt_iniciarse = (Button)findViewById(R.id.bt_iniciarse);
@@ -85,10 +87,11 @@ public class registro_student extends AppCompatActivity {
                 telefono = txt_telefono.getText().toString();
                 correo = txt_correo.getText().toString();
                 password = txt_password.getText().toString();
+                telefonoeme = txt_telefonoeme.getText().toString();
 
 
                 //validacion para saber si el usuario ingreso valores a los EditText
-                if(!matricula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !carrera.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty()){
+                if(!matricula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !carrera.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty() && !telefonoeme.isEmpty()){
 
                     //Firebase requiere de almenos 6 caracteres en la contraseña
                     if(password.length() >= 6 ){
@@ -138,6 +141,7 @@ public class registro_student extends AppCompatActivity {
                     map.put("Telefono",telefono);
                     map.put("Correo",correo);
                     map.put("Contraseña",password);
+                    map.put("Telefono de advertencia",telefonoeme);
 
 
                     //Obtener Id proporcionado de cada usuario de Database
