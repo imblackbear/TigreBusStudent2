@@ -292,12 +292,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
         iniciarenCU(googleMap);
 
 
-        //marcador parada oficial1
-        LatLng CU_uno = new LatLng(25.7244438,-100.3094848);
-        mMap.addMarker(new MarkerOptions().position(CU_uno).title("Parada oficial 1 ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_parada2_foreground)));
-
-
-
 
 
         ////////////////////////////
@@ -411,16 +405,26 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             case R.id.menu_informacion:
                 startActivity(new Intent(getApplicationContext(),info.class));
                 break;
-            //
+
+
+
+            //Markadores de los recorridos
             case R.id.menu_rCA:
                m_CienciasAgropecuarias();
                break;
 
-
-            //
             case R.id.menu_rCU:
-                Toast.makeText(this, "cerrar ses", Toast.LENGTH_SHORT).show();
+                m_CiudadUniversitaria();
                 break;
+
+            case R.id.menu_rUM:
+                m_UnidadMederos();
+                break;
+
+            case R.id.menu_rCdS:
+                m_CienciasSalud();
+                break;
+
 
             //flecha android
             case android.R.id.home:
@@ -434,17 +438,18 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
     //MARCADORES DE CIENCIAS AGROPECUARIAS
     private void m_CienciasAgropecuarias() {
+
         //PARADA 1
-        LatLng parada1 = new LatLng(25.768954,-100.293153);
-        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.768954,-100.293153))
+                .title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 2
+        LatLng parada1 = new LatLng(25.781568,-100.292435);
+        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
 
 
-
-        //PARADA 2
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.781568,-100.292435))
-                .title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
         //PARADA 3
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(25.784287,-100.285917))
@@ -466,39 +471,135 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                 .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //MARCADORES DE CIUDAD UNIVERSITARIA
     private void m_CiudadUniversitaria(){
 
         //PARADA 1
-        LatLng parada1 = new LatLng(25.768954,-100.293153);
-        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
-
-
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.724764,-100.309409))
+                .title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
 
         //PARADA 2
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.781568,-100.292435))
+                .position(new LatLng(25.729019,-100.308427))
                 .title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
         //PARADA 3
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.784287,-100.285917))
+                .position(new LatLng(25.728778,-100.311506))
                 .title("Parada oficial #3").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
 
         //PARADA 4
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.783325,-100.286812))
+                .position(new LatLng(25.729647,-100.312793))
                 .title("Parada oficial #4").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
 
         //PARADA 5
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.784779,-100.287254))
+                .position(new LatLng(25.726622,-100.316881))
                 .title("Parada oficial #5").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
 
         //PARADA 6
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(25.785772,-100.287172))
+                .position(new LatLng(25.723899,-100.316213))
                 .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 7
+        LatLng parada1 = new LatLng(25.723928,-100.313852);
+        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #7").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
+
+        //PARADA 8
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.723696,-100.311181))
+                .title("Parada oficial #5").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 8
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.724005,-100.309625))
+                .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+    }
+
+    private void m_UnidadMederos(){
+
+        //PARADA 1
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.615539,-100.275348))
+                .title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 2
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.614453,-100.276113))
+                .title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        //PARADA 3
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.613884,-100.279764))
+                .title("Parada oficial #3").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 4
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.614541,-100.282602))
+                .title("Parada oficial #4").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 5
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.614929,-100.291090))
+                .title("Parada oficial #5").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 6
+        LatLng parada1 = new LatLng(25.613272,-100.280471);
+        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
+
+        //PARADA 7
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.614254,-100.276911))
+                .title("Parada oficial #7").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+    }
+
+
+    private void m_CienciasSalud(){
+
+
+        //PARADA 1
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.691202,-100.346971))
+                .title("Parada oficial #1").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 2
+        LatLng parada1 = new LatLng(25.692494,-100.346900);
+        mMap.addMarker(new MarkerOptions().position(parada1).title("Parada oficial #2").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(parada1,15));
+
+
+        //PARADA 3
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.693450,-100.346860))
+                .title("Parada oficial #3").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 4
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.695641,-100.344346))
+                .title("Parada oficial #4").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 5
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.695729,-100.343773))
+                .title("Parada oficial #5").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 6
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.691822,-100.344269))
+                .title("Parada oficial #6").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
+        //PARADA 7
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(25.688559,-100.344627))
+                .title("Parada oficial #7").icon(BitmapDescriptorFactory.fromResource(R.drawable.paradaca)));
+
 
     }
 
