@@ -1,19 +1,14 @@
 package com.example.tigrebusstudent;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,7 +29,7 @@ import es.dmoral.toasty.Toasty;
 
 public class registro_student extends AppCompatActivity {
     //referencias de cada campo del XML
-    private EditText  txt_telefonoeme, txt_matricula,txt_nombre,txt_apellidos,txt_carrera,txt_telefono,txt_correo,txt_password;
+    private EditText  txt_telefonoeme, txt_matricula,txt_nombre,txt_apellidos,txt_escuela,txt_telefono,txt_correo,txt_password;
     private Button bt_registrar, bt_iniciarse;
     private ProgressDialog progressDialog;      //declarando variable PD
 
@@ -42,7 +37,7 @@ public class registro_student extends AppCompatActivity {
     private String matricula = "";
     private String nombre = "";
     private String apellidos = "";
-    private String carrera = "";
+    private String escuela = "";
     private String telefono = "";
     private String correo = "";
     private String password = "";
@@ -86,22 +81,7 @@ public class registro_student extends AppCompatActivity {
         alertDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                AlertDialog.Builder alerta = new AlertDialog.Builder(registro_student.this);
-                alerta.setMessage("El teléfono de advertencia es un numero al cual se le va a enviar tu ultima ubicación por un medio de un SMS por si en alguna situación te encuentras en peligro, asegúrate de colocar bien el número y sin código de país. ")
-                        .setCancelable(true)
 
-                        .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog titulo = alerta.create();
-                titulo.setTitle("Teléfono de advertencia");
-                titulo.show();
-
-                 */
                 mostrarAD();
 
             }
@@ -119,7 +99,7 @@ public class registro_student extends AppCompatActivity {
         txt_matricula = (EditText)findViewById(R.id.et_matricula);
         txt_nombre = (EditText)findViewById(R.id.et_nombre2);
         txt_apellidos = (EditText)findViewById(R.id.et_apellidos2);
-        txt_carrera = (EditText)findViewById(R.id.et_carrera2);
+        txt_escuela = (EditText)findViewById(R.id.et_escuela2);
         txt_telefono = (EditText)findViewById(R.id.et_telefono);
         txt_correo = (EditText)findViewById(R.id.et_correo2);
         txt_password = (EditText)findViewById(R.id.et_password2);
@@ -136,7 +116,7 @@ public class registro_student extends AppCompatActivity {
                 matricula = txt_matricula.getText().toString();
                 nombre = txt_nombre.getText().toString();
                 apellidos = txt_apellidos.getText().toString();
-                carrera = txt_carrera.getText().toString();
+                escuela = txt_escuela.getText().toString();
                 telefono = txt_telefono.getText().toString();
                 correo = txt_correo.getText().toString();
                 password = txt_password.getText().toString();
@@ -144,7 +124,7 @@ public class registro_student extends AppCompatActivity {
 
 
                 //validacion para saber si el usuario ingreso valores a los EditText
-                if(!matricula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !carrera.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty() && !telefonoeme.isEmpty()){
+                if(!matricula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty() && !escuela.isEmpty() && !telefono.isEmpty() && !correo.isEmpty() &&!password.isEmpty() && !telefonoeme.isEmpty()){
 
                     //Firebase requiere de almenos 6 caracteres en la contraseña
                     if(password.length() >= 6 ){
@@ -190,7 +170,7 @@ public class registro_student extends AppCompatActivity {
                     map.put("Matricula",matricula);
                     map.put("Nombre",nombre);
                     map.put("Apellidos",apellidos);
-                    map.put("Carrera",carrera);
+                    map.put("Escuela",escuela);
                     map.put("Telefono",telefono);
                     map.put("Correo",correo);
                     map.put("Contraseña",password);

@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_nombre2" />
 
     <EditText
-        android:id="@+id/et_carrera2"
+        android:id="@+id/et_escuela2"
         android:layout_width="180dp"
         android:layout_height="44dp"
         android:layout_marginStart="30dp"
@@ -72,7 +72,7 @@
         android:background="@drawable/boton_transparente"
         android:ems="10"
         android:fontFamily="@font/bold"
-        android:hint="@string/txt_carrera"
+        android:hint="@string/txt_escuela"
         android:inputType="textPersonName"
         android:textColor="@color/gris"
         android:textColorHint="@color/gris"
@@ -134,7 +134,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_carrera2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_escuela2" />
 
     <EditText
         android:id="@+id/et_password2"

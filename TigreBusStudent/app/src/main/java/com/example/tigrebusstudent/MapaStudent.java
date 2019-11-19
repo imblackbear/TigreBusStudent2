@@ -122,7 +122,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                             mDatabase.child("Usuarios").child("Alumnos").child(id).updateChildren(LatitudLongitud);
 
 
-                            Toasty.info(MapaStudent.this, "Recibio", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -187,8 +186,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,7 +211,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                     iniciarcu = true;
 
                 } else {
-                    Toasty.info(MapaStudent.this, "Puntos Actualizados", Toast.LENGTH_SHORT).show();
+                    Toasty.info(MapaStudent.this, "Información actualizada ", Toast.LENGTH_SHORT).show();
                     if (realTimeTimer != null) {
                         realTimeTimer.cancel();
                     }
@@ -260,8 +257,6 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                             String id = mAuth.getCurrentUser().getUid();
                             mDatabase.child("Usuarios").child("Alumnos").child(id).updateChildren(LatitudLongitud);
 
-
-                            Toasty.info(MapaStudent.this, "Recibio", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

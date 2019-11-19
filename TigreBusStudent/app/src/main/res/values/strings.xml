@@ -17,7 +17,7 @@
     <string name="txt_matricula">Matrícula:</string>
     <string name="txt_nombre">Nombres:</string>
     <string name="txt_apellidos">Apellidos:</string>
-    <string name="txt_carrera">Carrera:</string>
+    <string name="txt_escuela">Escuela:</string>
     <string name="txt_facultad">Facultad:</string>
     <string name="txt_correo">ejemplo@uanl.edu.mx</string>
     <string name="txt_password">••••••••••</string>
