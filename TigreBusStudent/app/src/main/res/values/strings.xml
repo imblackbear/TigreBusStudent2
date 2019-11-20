@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TigreBusStudent</string>
+    <string name="app_name">TigreApp</string>
     <string name="lo_matricula">Matrícula:</string>
     <string name="password">••••••••••</string>
     <string name="bt_ingresar">Ingresar</string>

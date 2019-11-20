@@ -146,7 +146,8 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                 if(clicContador == maximo)
                 {
 
-                        enviarubi(telefonoeme,"Esta es mi ultima ubicacion: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud);
+                        enviarubi(telefonoeme,"Esta es mi última ubicación: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud + "\n" + "\nEnlace a Google Maps:" + "\n https://maps.google.com/?q="+Latitud+","+Longitud +
+                                "\n\nPara obtener más información, póngase en contacto al siguiente correo electrónico: \n" + "tigrebussoporte@gmail.com");
                         clicContador = 0;
 
                 }
@@ -197,7 +198,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
         if (realTimeTimer != null) {
             realTimeTimer.cancel();
         }
-        realTimeTimer = new CountDownTimer(10000, 1000) {
+        realTimeTimer = new CountDownTimer(7000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Log.e("seconds remaining: ", "" + millisUntilFinished / 1000);
