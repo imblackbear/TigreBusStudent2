@@ -145,14 +145,20 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
                 clicContador2 ++;
                 if(clicContador == maximo)
                 {
+                        String link = "https://maps.google.com/?q="+Latitud+","+Longitud;
 
+                        /*
                         enviarubi(telefonoeme,"Esta es mi última ubicación: \n" + "Latitud: " + Latitud + "\n" + "Longitud: " + Longitud + "\n" + "\nEnlace a Google Maps:" + "\n https://maps.google.com/?q="+Latitud+","+Longitud +
                                 "\n\nPara obtener más información, póngase en contacto al siguiente correo electrónico: \n" + "tigrebussoporte@gmail.com");
+                         */
+
+                    enviarubi(telefonoeme,"Esta es mi ultima ubicacion: " + "\n\nEnlace a Google Maps:\n"+link);
+                    enviarubi(telefonoeme,"Para obtener mas informacion acerca de este mensaje, consulte al siguiente correo electronico:\ntigrebussoporte@gmail.com");
                         clicContador = 0;
 
                 }
                 if(clicContador2 == 15){
-                    Toasty.warning(getApplicationContext(),"Realizar muchas veces esta accion consume tu saldo",Toast.LENGTH_SHORT).show();
+                    Toasty.warning(getApplicationContext(),"Realizar muchas veces esta acción consume tu saldo",Toast.LENGTH_SHORT).show();
                     clicContador2 = 0;
                 }
 
@@ -609,7 +615,7 @@ public class MapaStudent extends AppCompatActivity implements OnMapReadyCallback
             Toasty.warning(getApplicationContext(),"Ultima ubicación enviada",Toasty.LENGTH_SHORT).show();
 
         }catch (Exception e){
-            Toasty.error(getApplicationContext(),"No se logro enviar la ubicaci;on",Toasty.LENGTH_SHORT).show();
+            Toasty.error(getApplicationContext(),"No se logro enviar la ubicación",Toasty.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

@@ -99,7 +99,6 @@ public class ingresar_student extends AppCompatActivity {
 
                                     }else {
                                         Toasty.warning(ingresar_student.this, "Correo no verificado", Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(ingresar_student.this,MainActivity.class));
                                     }
 
                             } else {
